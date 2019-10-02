@@ -6,15 +6,14 @@ import setuptools
 
 REQUIRED = [
     "numpy",
-    "pandas",
-    "sklearn"
+    "pandas"
 ]
 
 with open("README.md", "r") as fh:
     LONG_DESCRIPTION = fh.read()
     setuptools.setup(
         name="lambdata_eyvonne",
-        version="0.1.4",
+        version="0.1.17",
         author="eyvonne",
         description="a collection of DS helper Functions",
         long_description=LONG_DESCRIPTION,

@@ -5,7 +5,7 @@ utility functions for working with dataframes
 
 import pandas as pd
 
-TEST_DF = pd.DataFrame([1, 3, 4])
+TEST_DF = pd.DataFrame({'a': [1, 3, 4], 'b': [2, 5, 7]})
 
 
 def genData(DF, factor):
@@ -29,13 +29,14 @@ def listCol(df, list, colName):
     return df
 
 
-class ManageDF():
+class ManageDF:
     """
     A collection of helper functions for adding data or generating data
     """
+    TEST_DF = pd.DataFrame({'a': [1, 3, 4], 'b': [2, 5, 7]})
 
-    def __intit__(self, DF):
-        self.df = df
+    def __init__(self, DF):
+        self.df = DF
 
     def listCol(self, list, colName):
         """
@@ -45,13 +46,14 @@ class ManageDF():
         """
         ser = pd.Series(list)
         if self.df.shape[0] == ser.shape[0]:
-            df[colName] = ser.copy()
+            self.df[colName] = ser.copy()
         else:
-            print('list does not have enough elements. Needs', self.df.shape[0])
+            print('list does not have correct number of elements. Needs',
+                  self.df.shape[0])
         return self.df
 
     def genData(self, factor):
         """DF is a dataframe to be generated off of
         factor is how many addtional rows to create"""
-        df = pd.concat([self.df, self.df.sample(factor)])
+        df = pd.concat([self.df, self.df.sample(factor, replace=True)])
         return df
