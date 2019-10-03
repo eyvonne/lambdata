@@ -32,6 +32,7 @@ def listCol(df, list, colName):
 class ManageDF:
     """
     A collection of helper functions for adding data or generating data
+    All changes to the data happen inplace. 
     """
     TEST_DF = pd.DataFrame({'a': [1, 3, 4], 'b': [2, 5, 7]})
 
@@ -55,5 +56,5 @@ class ManageDF:
     def genData(self, factor):
         """DF is a dataframe to be generated off of
         factor is how many addtional rows to create"""
-        df = pd.concat([self.df, self.df.sample(factor, replace=True)])
-        return df
+        self.df = pd.concat([self.df, self.df.sample(factor, replace=True)])
+        return self.df
